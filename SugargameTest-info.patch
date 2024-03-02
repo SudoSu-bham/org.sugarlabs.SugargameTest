@@ -1,0 +1,24 @@
+diff --git a/test/activity/activity.info b/test/activity/activity.info
+index 56b8fa6..b7307df 100755
+--- a/test/activity/activity.info
++++ b/test/activity/activity.info
+@@ -1,6 +1,17 @@
+ [Activity]
+ name = SugargameTest
++activity_version = 7
+ bundle_id = org.sugarlabs.SugargameTest
++release_date = 2020-03-12
+ exec = sugar-activity3 TestActivity.TestActivity
+ icon = activity-generic
+-activity_version = 1
++license = GPLv2+
++metadata_license = CC0-1.0
++repository = https://github.com/sugarlabs/sugargame.git
++summary = A demo Sugar application
++description = HelloWorld is a demo application used in tutorials for developing new Sugar applications or porting Sugar applications to Flatpak.
++url = https://github.com/sugarlabs/hello-world.git
++tags = Education
++update_contact = tch@sugarlabs.org
++developer_name = Sugar Labs Community
++screenshots = https://i.imgur.com/N1uXt6S.png
+\ No newline at end of file
