@@ -1,0 +1,27 @@
+diff --git a/test/TestActivity.py b/test/TestActivity.py
+index 53e23b3..6d1c370 100644
+--- a/test/TestActivity.py
++++ b/test/TestActivity.py
+@@ -33,7 +33,7 @@ from sugar3.graphics.toolbarbox import ToolbarBox
+ from sugar3.activity.widgets import ActivityToolbarButton
+ from sugar3.graphics.toolbutton import ToolButton
+ from sugar3.activity.widgets import StopButton
+-
++from sugarapp.widgets import SugarCompatibleActivity
+ 
+ sys.path.append('..')  # Import sugargame package from top directory.
+ import sugargame.canvas
+@@ -41,11 +41,10 @@ import sugargame.canvas
+ import TestGame
+ 
+ 
+-class TestActivity(Activity):
++class TestActivity(SugarCompatibleActivity):
+ 
+     def __init__(self, handle):
+-        Activity.__init__(self, handle)
+-
++        SugarCompatibleActivity.__init__(self, handle)
+         self.paused = False
+ 
+         # Create the game instance.
