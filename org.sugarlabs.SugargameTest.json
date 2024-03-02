@@ -1,0 +1,74 @@
+{
+    "app-id": "org.sugarlabs.SugargameTest",
+    "base": "org.sugarlabs.BaseApp",
+    "base-version": "23.06",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "44",
+    "sdk": "org.gnome.Sdk",
+    "separate-locales": false,
+    "command": "sugarapp",
+    "finish-args": [
+        "--socket=x11",
+        "--socket=pulseaudio",
+        "--share=ipc",
+        "--device=dri",
+        "--env=SUGAR_BUNDLE_ID=org.sugarlabs.SugargameTest",
+        "--env=SUGAR_BUNDLE_PATH=/app/share/sugar/activities/SugargameTest.activity"
+    ],
+    "modules": [
+        {
+            "name": "pip",
+            "buildsystem": "simple",
+            "build-options": {
+                "build-args": [
+                  "--share=network"
+                ]
+            },
+            "build-commands": [
+                "pip install pygame --prefix=${FLATPAK_DEST}"
+            ]
+        },
+        {
+            "name": "hello-world",
+            "buildsystem": "simple",
+            "build-options": {
+                "build-args": [
+                  "--share=network"
+                ]
+            },
+            "build-commands": [
+                "python3 test/setup.py install --prefix=/app --skip-install-desktop-file --skip-install-mime"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/sugarlabs/sugargame",
+                    "branch": "master",
+                    "commit": "9451509d80dfe42eb31de06d1846f8c887c2fc17"
+                },
+                {
+                    "type": "patch",
+                    "path": "SugargameTest-port.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "SugargameTest-info.patch"
+                }
+
+            ],
+            "post-install": [
+                "sugarapp-gen-mimetypes test/activity/activity.info mimetypes",
+                "sugarapp-gen-appdata test/activity/activity.info appdata",
+                "sugarapp-gen-desktop test/activity/activity.info desktop --mimetypes mimetypes",
+                "install -D mimetypes /app/share/mime/packages/org.sugarlabs.SugargameTest.xml",
+                "install -D mimetypes /app/share/sugar/activities/SugargameTest.activity/activity/mimetypes.xml",
+                "install -D appdata /app/share/metainfo/org.sugarlabs.SugargameTest.appdata.xml",
+                "install -D desktop /app/share/applications/org.sugarlabs.SugargameTest.desktop",
+                "install -D test/activity/activity-generic.svg /app/share/icons/hicolor/scalable/apps/org.sugarlabs.SugargameTest.svg",
+                "/bin/sh -c 'mkdir -p /app/share/sugar/activities/SugargameTest.activity/sugargame'",
+                "install -D sugargame/* /app/share/sugar/activities/SugargameTest.activity/sugargame"
+
+            ]
+        }
+    ]
+}
