@@ -5,7 +5,7 @@ index 56b8fa6..b7307df 100755
 @@ -1,6 +1,17 @@
  [Activity]
  name = SugargameTest
-+activity_version = 7
++activity_version = 3
  bundle_id = org.sugarlabs.SugargameTest
 +release_date = 2020-03-12
  exec = sugar-activity3 TestActivity.TestActivity
