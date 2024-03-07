@@ -8,6 +8,12 @@ To know more refer: https://github.com/sugarlabs/sugargame
 
 To build this run the following command in terminal
 
+Install the latest version of BaseApp  
+
+```bash
+flatpak -y --user install org.sugarlabs.BaseApp
+```
+
 ```bash
 https://github.com/SudoSu-bham/org.sugarlabs.SugargameTest.git
 cd org.sugarlabs.SugargameTest
